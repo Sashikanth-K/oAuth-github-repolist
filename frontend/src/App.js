@@ -1,30 +1,20 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
-import logo from './logo.svg';
+import React from 'react';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import Home from './views/Home';
+import Debug from './views/Debug';
 import './App.css';
 
 
 function App() {
-  const [message, setMessage] = useState('');
-
-  useEffect(() => {
-    async function fetchData() {
-      const apiMessage = (await axios.get('/api')).data; 
-      setMessage(apiMessage);
-    }
-
-    fetchData();
-  }, []);
 
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>{message}</p>
-        <p>
-          TODO: Add initialize OAuth flow button here
-        </p>
-      </header>
+      <BrowserRouter>
+        <Switch>
+          <Route path="/debug" exact component={Debug} />
+          <Route path="/" component={Home} />
+        </Switch>
+      </BrowserRouter>
     </div>
   );
 }
