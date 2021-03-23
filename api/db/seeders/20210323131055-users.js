@@ -5,20 +5,20 @@ module.exports = {
       {
         username: 'johndoe',
         password: 'dontstorepasswordsthisway',
-        createdAt: new Date().toDateString(),
-        updatedAt: new Date().toDateString()
+        createdAt: new Date(),
+        updatedAt: new Date(),
       },
       {
         username: 'janedoe',
         password: 'youreallyshouldhashpasswords',
-        createdAt: new Date().toDateString(),
-        updatedAt: new Date().toDateString()
+        createdAt: new Date(),
+        updatedAt: new Date(),
       },
       {
         username: 'ritadoe',
         password: 'outofpasswordideas',
-        createdAt: new Date().toDateString(),
-        updatedAt: new Date().toDateString()
+        createdAt: new Date(),
+        updatedAt: new Date()
       }
     ], {}),
   down: (queryInterface, Sequelize) => {
