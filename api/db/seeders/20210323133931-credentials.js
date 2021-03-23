@@ -1,0 +1,22 @@
+'use strict';
+module.exports = {
+  up: queryInterface =>
+    queryInterface.bulkInsert('Credentials', [
+      {
+        appName: 'App Name',
+        accessToken: 'access_token',
+        refreshToken: 'access_token',
+        createdAt: new Date(),
+        updatedAt: new Date(),
+      }
+    ], {}),
+  down: (queryInterface, Sequelize) => {
+    /*
+      Add reverting commands here.
+      Return a promise to correctly handle asynchronicity.
+      Example:
+      return queryInterface.bulkDelete('People', null, {});
+    */
+    return queryInterface.bulkDelete('Credentials', null, {});
+  }
+};
