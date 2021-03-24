@@ -28,7 +28,7 @@ We expect you to collaborate with us the same way that you'd do in a daily basis
 * Tailwindcss
 
 #### Backend
-* Node JS
+* Node JS 15.7.0
 * Express framework
 
 #### Database
