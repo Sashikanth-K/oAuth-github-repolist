@@ -3,7 +3,7 @@ const router = express.Router();
 const db = require('../db/models');
 
 router.get('/', (req, res) => {
-    res.send("Hello world from API");
+    res.send("Hello World from API!");
 });
 
 router.get('/users', async (req, res) => {
