@@ -22,8 +22,21 @@ We expect you to collaborate with us the same way that you'd do in a daily basis
 * Authenticated user's login, id, link to user's github page (on click redirect to the user's profile) and email (if available - email is available if listed as public on github page).
 * login, id, link to user's github page and email of the octocat user.
 
-## Run locally:
-Clone the repository. Then from different terminals set up the backend and the frontend of the app.
+### The tech stack
+#### Frontend
+* React
+* Tailwindcss
+
+#### Backend
+* Node JS
+* Express framework
+
+#### Database
+* sqlite3
+
+## Run locally
+
+Clone the repository. Then from 2 different terminals set up the backend and the frontend of the app.
 ### Compile the web-api:
 ```
 $ cd api
