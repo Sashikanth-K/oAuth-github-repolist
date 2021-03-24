@@ -55,3 +55,7 @@ You should be able to access the app inside the browser using ```localhost:3000`
 The web api should be running on port ```5000```.
 If everything went as expected, on the homepage of the app you should see the ```Hello World from API!```.
 You also can access `/debug` from the browser to see a list with the users and the credentials that are now stored in the database.
+
+## Wireframe
+![alt text](https://i.ibb.co/vJ3rCc5/Wireframe.png)
+
