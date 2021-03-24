@@ -57,5 +57,5 @@ If everything went as expected, on the homepage of the app you should see the ``
 You also can access `/debug` from the browser to see a list with the users and the credentials that are now stored in the database.
 
 ## Wireframe
-![alt text](https://i.ibb.co/vJ3rCc5/Wireframe.png)
+![alt text](/Wireframe.png)
 
