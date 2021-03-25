@@ -31,7 +31,7 @@ const UserProvider = (props) => {
   }, []);
 
   return (
-    <context.Provider value={{ isAuthorized }}>
+    <context.Provider value={{ isAuthorized, setUserInfo, userInfo }}>
       {props.children}
     </context.Provider>
   );

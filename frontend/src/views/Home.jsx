@@ -3,10 +3,12 @@ import axios from "axios";
 import queryString from "query-string";
 import Footer from "../components/Footer";
 import Header from "../components/Header";
-import UserProvider from "../components/AuthProvider";
+import UserProvider from "../components/UserProvider";
+import UserInfo from "../components/UserInfo";
+import Repositories from "../components/Repositories";
 
 function Home(props) {
-  const au = useContext(UserProvider.context);
+  const userContext = useContext(UserProvider.context);
 
   const [message, setMessage] = useState("");
   const [errorMessage, setErrorMessage] = useState(null);
@@ -37,7 +39,7 @@ function Home(props) {
           </button>
         </div>
         <div className="flex  flex-col flex-grow bg-red-50 m-2 rounded-lg p-4 overflow-y-auto">
-          {!au.isAuthorized ? (
+          {!userContext.isAuthorized ? (
             <div>
               <button
                 className="p-2 hover:bg-white focus:bg-gray-200"
@@ -49,6 +51,10 @@ function Home(props) {
           ) : (
             <div>
               <h1>Autherized</h1>
+
+              <UserInfo/>
+
+              <Repositories/>
             </div>
           )}
         </div>
