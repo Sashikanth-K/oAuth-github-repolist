@@ -3,9 +3,9 @@ module.exports = {
   up: queryInterface =>
     queryInterface.bulkInsert('Credentials', [
       {
-        appName: 'TestApp',
-        accessToken: 'test_access_token_123',
-        refreshToken: 'test_refresh_token_456',
+        appName: 'github',
+        accessToken: 'todo_access_token_123',
+        refreshToken: 'todo_refresh_token_456',
         createdAt: new Date(),
         updatedAt: new Date(),
       }

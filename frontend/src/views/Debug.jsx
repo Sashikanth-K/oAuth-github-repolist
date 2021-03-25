@@ -25,7 +25,7 @@ function Debug() {
             <h1 className="text-2xl font-bold mb-8 mt-4 text-white">Debug</h1>
             <div className="w-3/5 m-auto border p-4 mb-8 bg-white">
                 <h2 className="text-xl text-left font-bold p-4">Users</h2>
-                <ul class="divide-y divide-gray-200 ml-8">
+                <ul className="divide-y divide-gray-200 ml-8">
                     <li key="header" className="p-4 flex bg-gray-100 font-bold">
                         <div className="flex w-1/12">id</div>
                         <div className="flex w-5/12">Username</div>
@@ -33,7 +33,7 @@ function Debug() {
                     </li>
                     {users.map((user) => {
                         return (
-                            <li class="p-4 flex" key={user.id}>
+                            <li className="p-4 flex" key={user.id}>
                                 <div className="flex w-1/12">{user.id}</div>
                                 <div className="flex w-5/12">{user.username}</div>
                                 <div className="flex w-5/12">{user.password}</div>
@@ -44,7 +44,7 @@ function Debug() {
             </div>
             <div className="w-3/5 m-auto border p-4 bg-white">
                 <h2 className="text-xl text-left font-bold p-4">Credentials</h2>
-                <ul class="divide-y divide-gray-200 ml-8">
+                <ul className="divide-y divide-gray-200 ml-8">
                     <li key="header" className="p-4 flex bg-gray-100 font-bold">
                         <div className="flex w-1/12">id</div>
                         <div className="flex w-3/12">App Name</div>
@@ -53,7 +53,7 @@ function Debug() {
                     </li>
                     {credentials.map((credential) => {
                         return (
-                            <li class="p-4 flex" key={credential.id}>
+                            <li className="p-4 flex" key={credential.id}>
                                 <div className="flex w-1/12">{credential.id}</div>
                                 <div className="flex w-3/12">{credential.appName}</div>
                                 <div className="flex w-4/12">{credential.accessToken}</div>
