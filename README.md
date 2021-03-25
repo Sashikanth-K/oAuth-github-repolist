@@ -57,6 +57,12 @@ The web api should be running on port ```5000```.
 If everything went as expected, on the homepage of the app you should see the ```Hello World from API!```.
 You also can access `/debug` from the browser to see a list with the users and the credentials that are now stored in the database.
 
+
+## Quick tips
+* Use the existent credentials table to save the credentials. You can use 'github' as the appName for the record.
+* You don't need to implement user authetication and you don't need to save multiple records of credentials for different users, just save the credentials once (you can store the credentials using appName = 'github' and then query the credentials using the appName = 'github', but make sure you store the credentials once or you replace the credentials if you've already stored them). 
+* The focus should be on implementing the OAuth flow and querying the asked information using the Github API.
+* There are no limitations on how the app should work as long as you get the asked information using the Github API. Feel free to change the databse structure if you need to.
+
 ## Wireframe
 ![alt text](/Wireframe.png)
-
