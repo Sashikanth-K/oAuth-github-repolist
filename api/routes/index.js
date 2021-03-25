@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router();
 const db = require("../db/models");
 const config = require("../config");
+const axios = require("axios");
 
 router.get("/", (req, res) => {
   res.send("Hello World from API!");
