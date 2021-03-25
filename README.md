@@ -1,7 +1,7 @@
 # OAuth Integration Code Challenge
 ## Instructions
 Congratulations, you made it to the next step at Zelt's recruiting process! At this stage, we need to check your techinical skills by asking you to do what you like the most: writing code.
-In this technical challenge we would like to see your best work. The most important aspects that we're going to judge is your capacity to produce high quality code that is well organised, readable, testable and that follows the best practices in the software engineering industry. That's why we provide you a boilerplate project so you don't need to spend time with it.  We'd like you to create a private repository and invite us to have access to it.
+In this technical challenge we would like to see your best work. The most important aspects that we're going to judge is your capacity to produce high quality code that is well organised, readable, testable and that follows the best practices in the software engineering industry. That's why we provide you a boilerplate project so you don't need to spend time with it.  We'd like you to create a private repository (you can fork this repo or you can clone it and then use the code for your repo) and invite us to have access to it.
 We expect you to collaborate with us the same way that you'd do in a daily basis when working at Zelt, meaning:
 * Create (one or multiple, at your discretion) pull requests with your changes.
 * Write clear commit messages and keep your commit history clean.
@@ -11,6 +11,7 @@ We expect you to collaborate with us the same way that you'd do in a daily basis
 1. Create a web app which enables a user to view his github profile details after authorizing the Github application the user has created.
 2. Create a page where the user can see his public and private repositories, filter and sort them.
 ## Requirements
+### * Make sure your repository is private and add us as collaborators. You can invite us using the following usernames: rbagrin, elgutierrez and xBartu
 * Create the Github OAuth application.
 * Create a start page with a form containing a button which will be used to initiate the Github OAuth flow.
 * On clicking the button you should start the OAuth flow and be redirected to the Github Authorization page.
@@ -28,7 +29,7 @@ We expect you to collaborate with us the same way that you'd do in a daily basis
 * Tailwindcss
 
 #### Backend
-* Node JS
+* Node JS 15.7.0
 * Express framework
 
 #### Database
@@ -55,3 +56,13 @@ You should be able to access the app inside the browser using ```localhost:3000`
 The web api should be running on port ```5000```.
 If everything went as expected, on the homepage of the app you should see the ```Hello World from API!```.
 You also can access `/debug` from the browser to see a list with the users and the credentials that are now stored in the database.
+
+
+## Quick tips
+* Use the existent credentials table to save the credentials. You can use 'github' as the appName for the record.
+* You don't need to implement user authetication and you don't need to save multiple records of credentials for different users, just save the credentials once (you can store the credentials using appName = 'github' and then query the credentials using the appName = 'github', but make sure you store the credentials once or you replace the credentials if you've already stored them). 
+* The focus should be on implementing the OAuth flow and querying the asked information using the Github API.
+* There are no limitations on how the app should work as long as you get the asked information using the Github API. Feel free to change the databse structure if you need to.
+
+## Wireframe
+![alt text](/Wireframe.png)
