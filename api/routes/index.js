@@ -121,7 +121,7 @@ router.post("/authorize", async (req, res) => {
     });
   } catch (error) {
     console.log(error);
-    res.status(404).json({ error });
+    res.status(200).json({ message: error.message, status: 401 });
   }
 });
 
@@ -131,6 +131,7 @@ router.get("/users/getuserdata", async (req, res) => {
     let creds = await db.Credentials.findOne({
       where: {
         id: 1,
+        appName : "github"
       },
     });
 
@@ -155,14 +156,18 @@ router.get("/users/getuserdata", async (req, res) => {
 // get repos of the user related to the access_token stored in db before
 router.get("/users/:username/repos", async (req, res) => {
   try {
+
     const username = req.params.username.trim();
+    const query = req.query;
     let creds = await db.Credentials.findOne({
       where: {
         id: 1,
+        appName : "github"
       },
     });
 
     let data = await axios.get(config.GITHUB_API + `/users/${username}/repos`, {
+      params : query,
       headers: {
         Authorization: "token " + creds.accessToken,
       },
