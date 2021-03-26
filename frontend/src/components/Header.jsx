@@ -6,7 +6,7 @@ const Header = (props) => {
   return (
     <div className="flex justify-between align-middle m-2 p-4 bg-white rounded-md shadow-md">
       <h1>{props.name + " Page"}</h1>
-      {userContext.isAuthorized ? (
+      { userContext && userContext.isAuthorized ? (
         <div className="flex space-x-1 pl-2 pr-2 pt-1 pb-1  shadow-sm rounded-lg hover:bg-red-200">
           <button
             className="uppercase focus:outline-none "

@@ -95,7 +95,7 @@ const Repositories = (props) => {
       </div>
       {!repos ? (
         <div className="flex flex-row justify-center ">
-          <div class="loader ease-linear rounded-full border-8 border-t-8 border-gray-200 h-10 w-10 mr-3"></div>
+          <div className="loader ease-linear rounded-full border-8 border-t-8 border-gray-200 h-10 w-10 mr-3"></div>
         </div>
       ) : (
         <Fragment>
