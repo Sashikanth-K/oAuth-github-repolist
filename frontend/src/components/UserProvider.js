@@ -1,6 +1,7 @@
 import React, { createContext, useState, useEffect } from "react";
 import queryString from "query-string";
 import axios from "axios";
+import config from "../config";
 
 const context = createContext(null);
 const UserProvider = (props) => {
@@ -9,11 +10,12 @@ const UserProvider = (props) => {
   const [errorMessage, setErrorMessage] = useState("");
 
   useEffect(() => {
-    let { code } = queryString.parse(props.location.search);
+    let { code, state } = queryString.parse(props.location.search);
 
-    if (code) {
+    if (code && state == config.STATE) {
       console.log(code, "auth");
       fetchData(code);
+
     }
 
     async function fetchData(acode) {

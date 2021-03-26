@@ -2,7 +2,7 @@ import React, { PureComponent } from "react";
 
 const RepoCard = (props) => {
   return (
-    <div className="flex flex-row justify-between shadow-md rounded-lg ">
+    <div className="flex flex-row justify-between shadow-md rounded-lg bg-white ">
       <div className="flex-grow flex-col p-6 border-l-2 border-red-100">
         <h1 className="text-lg">{props.data.name}</h1>
         <p className="text-xs font-light text-opacity-0">

@@ -1,9 +1,9 @@
 import React, {
-  Componentm,
+
   useState,
   useContext,
   useEffect,
-  Fragment,
+ 
 } from "react";
 import axios from "axios";
 import UserProvider from "./UserProvider";
@@ -32,7 +32,7 @@ const UserInfo = (props) => {
           <div class="loader ease-linear rounded-full border-8 border-t-8 border-gray-200 h-10 w-10 mr-3"></div>
         </div>
       ) : (
-        <div className=" space-y-3 shadow-lg p-5 rounded-lg">
+        <div className=" space-y-3 shadow-lg p-5 rounded-lg bg-white">
           <div className="flex flex-row justify-center p-4">
             <div className="rounded-full">
               <img
