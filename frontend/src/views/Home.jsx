@@ -70,7 +70,7 @@ function Home(props) {
           </button>
         </div>
         <div className="flex flex-col  justify-items-stretch flex-grow   m-2 rounded-lg p-4 overflow-y-auto bg-gray-100">
-          {!userContext.isAuthorized ? (
+          {userContext && !userContext.isAuthorized ? (
             <div className="flex flex-col  justify-center justify-items-stretch flex-grow ">
               <div className="flex  justify-center focus:bg-gray-200">
                 <button
