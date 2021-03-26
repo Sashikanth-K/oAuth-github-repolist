@@ -39,7 +39,7 @@ const Repositories = (props) => {
   }, []);
 
   return (
-    <div className="flex flex-col  pl-52 pr-52 pb-5 pt-5 space-y-20  overflow-y-auto">
+    <div className="flex flex-col  pl-52 pr-52  space-y-20  overflow-y-auto ">
       <div className="flex flex-col justify-center ">
         <div className="shadow flex m-k2 flex-grow">
           <input

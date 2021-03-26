@@ -1,19 +1,13 @@
-import React, { useState, useContext, useEffect } from "react";
-import axios from "axios";
-import queryString from "query-string";
+import React, { useState, useContext } from "react";
 import Footer from "../components/Footer";
 import Header from "../components/Header";
 import UserProvider from "../components/UserProvider";
 import UserInfo from "../components/UserInfo";
 import Repositories from "../components/Repositories";
+import config from "../config";
 
 function Home(props) {
   const userContext = useContext(UserProvider.context);
-
-  const [message, setMessage] = useState("");
-  const [errorMessage, setErrorMessage] = useState(null);
-  const [isAutherized, setIsAutherized] = useState(false);
-  const [userInfo, setUserInfo] = useState({});
   const [isHome, setIsHome] = useState(true);
 
   const handleHomebuttonClick = (e) => {
@@ -26,8 +20,16 @@ function Home(props) {
   };
 
   const handleClick = () => {
-    let url =
-      "https://github.com/login/oauth/authorize?client_id=245323fa4f053a1e923b&redirect_uri=http%3A%2F%2Flocalhost%3A3000&scope=user&response_type=code&response_mode=form_post&nonce=34zgf1s4sar";
+    let queryparams = {
+      client_id: config.CLIENT_ID,
+      redirect_uri: config.REDIRECT_URI,
+      scope: config.SCOPE,
+      response_type: config.RESPONSE_TYPE,
+      response_mode: config.RESPONSE_MODE,
+      state: config.STATE,
+    };
+    const queryString = new URLSearchParams(queryparams).toString();
+    let url = config.AUTHERIZATION_URL + "?" + queryString;
     window.location.href = url;
   };
 
@@ -37,7 +39,7 @@ function Home(props) {
         <Header name={isHome ? "Home" : "Repositories"} />
       </div>
       <div className="flex  flex-grow overflow-y-auto">
-        <div className="flex flex-col justify-around bg-blue-50 m-2 rounded-md p-4">
+        <div className="flex flex-col justify-around ml-6 mr-6 m-2 rounded-md p-4">
           <button
             id="home"
             className={`p-2 py-2 px-4 bg-transparent  font-semibold border border-blue-500 rounded
@@ -67,7 +69,7 @@ function Home(props) {
             Repositories
           </button>
         </div>
-        <div className="flex flex-col  justify-items-stretch flex-grow   m-2 rounded-lg p-4 overflow-y-auto bg-gray-50">
+        <div className="flex flex-col  justify-items-stretch flex-grow   m-2 rounded-lg p-4 overflow-y-auto bg-gray-100">
           {!userContext.isAuthorized ? (
             <div className="flex flex-col  justify-center justify-items-stretch flex-grow ">
               <div className="flex  justify-center focus:bg-gray-200">
