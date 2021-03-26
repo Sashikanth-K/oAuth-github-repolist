@@ -20,7 +20,7 @@ const Repositories = (props) => {
 
   return (
     <div>
-      <h1>user info</h1>
+      <h1>repo</h1>
     </div>
   );
 };

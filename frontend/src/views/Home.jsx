@@ -14,11 +14,16 @@ function Home(props) {
   const [errorMessage, setErrorMessage] = useState(null);
   const [isAutherized, setIsAutherized] = useState(false);
   const [userInfo, setUserInfo] = useState({});
-  //const [isHome, setIsHome] = useState(true);
+  const [isHome, setIsHome] = useState(true);
 
-  // useEffect(() => { 
-    
-  // }, []);
+  const handleHomebuttonClick = (e) => {
+    let trgt = e.target.id;
+    if (trgt == "home" && !isHome) {
+      setIsHome(!isHome);
+    } else if (trgt == "repo" && isHome) {
+      setIsHome(!isHome);
+    }
+  };
 
   const handleClick = () => {
     let url =
@@ -33,28 +38,52 @@ function Home(props) {
       </div>
       <div className="flex  flex-grow overflow-y-auto">
         <div className="flex flex-col justify-around bg-blue-50 m-2 rounded-md p-4">
-          <button className="p-2 hover:bg-white focus:bg-gray-200">Home</button>
-          <button className="p-2 hover:bg-white focus:bg-gray-200">
+          <button
+            id="home"
+            className={`p-2 py-2 px-4 bg-transparent  font-semibold border border-blue-500 rounded
+            hover:bg-blue-500 hover:text-white hover:border-transparent focus:outline-none
+            ${
+              isHome
+                ? `text-white border-transparent bg-blue-500 `
+                : `text-blue-700`
+            }  
+            `}
+            onClick={handleHomebuttonClick}
+          >
+            Home
+          </button>
+          <button
+            id="repo"
+            className={`p-2 py-2 px-4 bg-transparent  font-semibold border border-blue-500 rounded
+            hover:bg-blue-500 hover:text-white hover:border-transparent focus:outline-none
+            ${
+              !isHome
+                ? `text-white border-transparent bg-blue-500 `
+                : `text-blue-700`
+            }  
+            `}
+            onClick={handleHomebuttonClick}
+          >
             Repositories
           </button>
         </div>
-        <div className="flex  flex-col flex-grow bg-red-50 m-2 rounded-lg p-4 overflow-y-auto">
+        <div className="flex flex-col  justify-center  content-center justify-items-stretch flex-grow   m-2 rounded-lg p-4 overflow-y-auto">
           {!userContext.isAuthorized ? (
-            <div>
+            <div className="flex hover:bg-white focus:bg-gray-200">
               <button
-                className="p-2 hover:bg-white focus:bg-gray-200"
+                className="p-2 uppercase 
+                  bg-transparent hover:bg-blue-500 text-blue-700 font-semibold 
+                  hover:text-white py-2 px-4 border
+                   border-blue-500 hover:border-transparent 
+                   rounded"
                 onClick={handleClick}
               >
                 connect with github
               </button>
             </div>
           ) : (
-            <div>
-              <h1>Autherized</h1>
-
-              <UserInfo/>
-
-              <Repositories/>
+            <div className="flex flex-col justify-center ">
+              {isHome ? <UserInfo /> : <Repositories />}
             </div>
           )}
         </div>
