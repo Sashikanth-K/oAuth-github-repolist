@@ -34,7 +34,7 @@ function Home(props) {
   return (
     <div className="flex flex-col h-screen">
       <div>
-        <Header name={"Home page"} />
+        <Header name={isHome ? "Home" : "Repositories"} />
       </div>
       <div className="flex  flex-grow overflow-y-auto">
         <div className="flex flex-col justify-around bg-blue-50 m-2 rounded-md p-4">
@@ -67,22 +67,24 @@ function Home(props) {
             Repositories
           </button>
         </div>
-        <div className="flex flex-col  justify-center  content-center justify-items-stretch flex-grow   m-2 rounded-lg p-4 overflow-y-auto">
+        <div className="flex flex-col  justify-items-stretch flex-grow   m-2 rounded-lg p-4 overflow-y-auto bg-gray-50">
           {!userContext.isAuthorized ? (
-            <div className="flex hover:bg-white focus:bg-gray-200">
-              <button
-                className="p-2 uppercase 
-                  bg-transparent hover:bg-blue-500 text-blue-700 font-semibold 
+            <div className="flex flex-col  justify-center justify-items-stretch flex-grow ">
+              <div className="flex  justify-center focus:bg-gray-200">
+                <button
+                  className="p-2 uppercase 
+                  bg-transparent hover:bg-black text-black font-semibold 
                   hover:text-white py-2 px-4 border
-                   border-blue-500 hover:border-transparent 
+                   border-black hover:border-transparent 
                    rounded"
-                onClick={handleClick}
-              >
-                connect with github
-              </button>
+                  onClick={handleClick}
+                >
+                  connect with github
+                </button>
+              </div>
             </div>
           ) : (
-            <div className="flex flex-col justify-center ">
+            <div className="flex flex-col  overflow-y-auto ">
               {isHome ? <UserInfo /> : <Repositories />}
             </div>
           )}
