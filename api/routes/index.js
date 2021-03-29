@@ -154,10 +154,9 @@ router.get("/users/getuserdata", async (req, res) => {
 });
 
 // get repos of the user related to the access_token stored in db before
-router.get("/users/:username/repos", async (req, res) => {
+router.get("/user/repos", async (req, res) => {
   try {
 
-    const username = req.params.username.trim();
     const query = req.query;
     let creds = await db.Credentials.findOne({
       where: {
@@ -166,7 +165,7 @@ router.get("/users/:username/repos", async (req, res) => {
       },
     });
 
-    let data = await axios.get(config.GITHUB_API + `/users/${username}/repos`, {
+    let data = await axios.get(config.GITHUB_API + `/user/repos`, {
       params : query,
       headers: {
         Authorization: "token " + creds.accessToken,
