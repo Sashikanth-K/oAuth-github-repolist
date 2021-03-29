@@ -22,9 +22,10 @@ const Repositories = (props) => {
     try {
       setRepos(null);
       const data = (
-        await axios.get(`/api/users/${userContext.userInfo.login}/repos`, {
+        await axios.get(`/api/user/repos`, {
           params: {
             sort: param.sort,
+            affiliation : "owner"
           },
         })
       ).data;
