@@ -125,6 +125,39 @@ router.post("/authorize", async (req, res) => {
   }
 });
 
+
+
+
+
+
+// confirm weather the user is authorized or not
+router.get("/isauthorized", async (req, res) => {
+  try {
+    let creds = await db.Credentials.findOne({
+      where: {
+        id: 1,
+        appName: "github",
+      },
+    });
+
+    // as access_token doesnot expire until the user manually revokes
+    if (creds && creds.accessToken) {
+      return res.status(200).json({
+        status: 200,
+        message: "Authorized",
+      });
+    } else {
+      return res.status(200).json({
+        status: 401,
+        message: "Un-authorized",
+      });
+    }
+  } catch (error) {
+    console.log(error);
+    res.status(500).json(error.message);
+  }
+});
+
 // get user info related to the access_token stored in the db before
 router.get("/users/getuserdata", async (req, res) => {
   try {
