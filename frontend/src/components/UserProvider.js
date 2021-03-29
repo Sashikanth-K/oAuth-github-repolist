@@ -9,37 +9,52 @@ const UserProvider = (props) => {
   const [userInfo, setUserInfo] = useState(null);
   const [errorMessage, setErrorMessage] = useState("");
 
-  useEffect(() => {
-    let { code, state } = queryString.parse(props.location.search);
+  async function confirmAuthorized() {
+    try {
+      const data = (await axios.get("/api/isauthorized")).data;
+      if (data && data.status == 200) {
+        setIsAuthorized(true);
+      } else {
+        let { code, state } = queryString.parse(props.location.search);
 
-    if (code && state == config.STATE) {
-      console.log(code, "auth");
-      fetchData(code);
-
-    }
-
-    async function fetchData(acode) {
-      try {
-        const data = (
-          await axios.post("/api/authorize", {
-            code: acode,
-          })
-        ).data;
-        if (data && data.status == 200) {
-          setIsAuthorized(true);
-        } else {
-          setIsAuthorized(false);
-          setErrorMessage(data.message);
+        if (code && state == config.STATE) {
+          console.log(code, "auth");
+          authorize(code);
         }
-      } catch (error) {
-        setIsAuthorized(false);
-        setErrorMessage("Error in authorizing ! Try again....");
       }
+    } catch (error) {
+      setIsAuthorized(false);
+      setErrorMessage("Error in authorizing ! Try again....");
     }
+  }
+
+  async function authorize(acode) {
+    try {
+      const data = (
+        await axios.post("/api/authorize", {
+          code: acode,
+        })
+      ).data;
+      if (data && data.status == 200) {
+        setIsAuthorized(true);
+      } else {
+        setIsAuthorized(false);
+        setErrorMessage(data.message);
+      }
+    } catch (error) {
+      setIsAuthorized(false);
+      setErrorMessage("Error in authorizing ! Try again....");
+    }
+  }
+
+  useEffect(() => {
+    confirmAuthorized();
   }, []);
 
   return (
-    <context.Provider value={{ isAuthorized, setUserInfo, userInfo, errorMessage }}>
+    <context.Provider
+      value={{ isAuthorized, setUserInfo, userInfo, errorMessage }}
+    >
       {props.children}
     </context.Provider>
   );
